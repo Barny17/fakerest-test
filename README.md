@@ -32,11 +32,14 @@ python3 task.py
 The output file answer.json is created and contains the computed response.
 
 \* Tested on Ubuntu 20.04 using Python 3.8.10
-
+\* Also tested on MacOS Monterey and Python 3.13.2
 
 ## Testing
 Supply a small JSON file as input for testing (comment out as required). 
 TODO: Add args.
+
+## Security
+There is no inherent security implemented in this script. The data retrieved is reported to be 'fake' and thus compliant with anticipated Data Privacy and Sharing requirements.
 
 ## TODO
 Add a Pytest
