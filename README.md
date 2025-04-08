@@ -32,6 +32,7 @@ python3 task.py
 The output file answer.json is created and contains the computed response.
 
 \* Tested on Ubuntu 20.04 using Python 3.8.10
+
 \* Also tested on MacOS Monterey and Python 3.13.2
 
 ## Testing
