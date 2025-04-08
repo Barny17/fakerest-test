@@ -31,6 +31,8 @@ python3 task.py
 ```
 The output file answer.json is created and contains the computed response.
 
+\* Tested on Ubuntu 20.04 using Python 3.8.10
+
 
 ## Testing
 Supply a small JSON file as input for testing (comment out as required). 
