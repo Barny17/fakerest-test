@@ -1,0 +1,110 @@
+[
+    {
+        "id": 400000,
+        "name": "Levi",
+        "city": "Charleston",
+        "age": 60,
+        "friends": [
+            {
+                "name": "Sarah",
+                "hobbies": [
+                    "Running",
+                    "Fishing"
+                ]
+            },
+            {
+                "name": "Isabella",
+                "hobbies": [
+                    "Cooking",
+                    "Jewelry Making",
+                    "Television"
+                ]
+            },
+            {
+                "name": "Grace",
+                "hobbies": [
+                    "Quilting",
+                    "Calligraphy",
+                    "Housework"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 400001,
+        "name": "Jack",
+        "city": "Branson",
+        "age": 87,
+        "friends": [
+            {
+                "name": "Chris",
+                "hobbies": [
+                    "Music",
+                    "Gardening",
+                    "Jewelry Making"
+                ]
+            },
+            {
+                "name": "Luke",
+                "hobbies": [
+                    "Tennis",
+                    "Golf",
+                    "Woodworking"
+                ]
+            },
+            {
+                "name": "John",
+                "hobbies": [
+                    "Golf",
+                    "Traveling"
+                ]
+            },
+            {
+                "name": "Camila",
+                "hobbies": [
+                    "Movie Watching",
+                    "Dancing",
+                    "Running"
+                ]
+            },
+            {
+                "name": "Daniel",
+                "hobbies": [
+                    "Jewelry Making",
+                    "Playing Cards",
+                    "Video Games"
+                ]
+            },
+            {
+                "name": "Oliver",
+                "hobbies": [
+                    "Shopping",
+                    "Reading"
+                ]
+            }
+        ]
+    },
+    {
+        "id": 400002,
+        "name": "Mateo",
+        "city": "Saint Augustine",
+        "age": 56,
+        "friends": [
+            {
+                "name": "Kevin",
+                "hobbies": [
+                    "Gardening",
+                    "Writing"
+                ]
+            },
+            {
+                "name": "Michael",
+                "hobbies": [
+                    "Team Sports",
+                    "Traveling"
+                ]
+            }
+        ]
+    }
+]
+
