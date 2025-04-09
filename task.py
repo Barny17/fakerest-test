@@ -41,6 +41,7 @@ def get_data(url):
                     json_objects.append(json_object)
                 except json.JSONDecodeError as e:
                     print(f"Error decoding JSON: {e}")
+                    exit(-1)
         retval = json_objects
     else:
         print(f"Request failed with status code: {response.status_code}")
@@ -76,8 +77,9 @@ def process_json(json):
         print("DataFrame check failed. Exiting.")
         exit(-1)
     
-    # Calculate the average age
-    average_age = df['age'].mean().round().astype(int)
+    # Calculate the average age per city
+    # average_age = df['age'].mean().round().astype(int)
+    average_age_per_city = df.groupby('city')['age'].mean().round().astype(int)
     # Calculate the average number of friends per city
     df['num_friends'] = df['friends'].apply(len)
     average_friends_per_city = df.groupby('city')['num_friends'].mean().round().astype(int)
@@ -85,8 +87,14 @@ def process_json(json):
     # Find the person with the most friends
     person_with_most_friends = df.loc[df['num_friends'].idxmax()]
     
-    # Find the most common name in each city
-    most_common_name_per_city = df.groupby('city')['name'].agg(lambda x: x.mode()[0])
+    # Find the most common name over all cities
+    # Get the most common name across all cities
+    all_names = df['name'].tolist()
+    # Count the occurrences of each name
+    name_counts = Counter(all_names)
+    # Find the most common name
+    most_common_name = name_counts.most_common(1)[0][0]
+    most_common_name_count = name_counts.most_common(1)[0][1]
     
     # Find the most common hobby among all friends
     all_hobbies = []
@@ -100,11 +108,14 @@ def process_json(json):
     
     # Combine the computed values into a DataFrame
     results_df = pd.DataFrame({
-        'average_age': [average_age],
+        'average_age_per_city': [average_age_per_city.to_dict()],
         'average_friends_per_city': [average_friends_per_city.to_dict()],
         'person_with_most_friends': [person_with_most_friends['name']],
         'most_friends_count': [person_with_most_friends['num_friends']],
-        'most_common_name_per_city': [most_common_name_per_city.to_dict()],
+        'most_common_name' : [most_common_name],
+        'most_common_name_count': [most_common_name_count],
+        #'most_common_name_per_city': [most_common_name_per_city.to_dict()],
+        'most_common_name_all_cities': [most_common_name],
         'most_common_hobby': [most_common_hobby[0]],
         'most_common_hobby_count': [most_common_hobby[1]]
     })
@@ -131,7 +142,9 @@ def check_dataframe(df):
 def print_results(df):
     '''
     Convenience function to print the results in a readable format.'''
-    print(f"The average age is: {df['average_age'][0]}")
+    print(f"The average age per city:")
+    for city, mean_age in df['average_age_per_city'][0].items():
+        print(f"{city}: {mean_age}")
     print()
     print(f"Average number of friends per city:")
     for city, mean_friends in df['average_friends_per_city'][0].items():
@@ -139,9 +152,8 @@ def print_results(df):
     print()
     print(f"Person with the most friends: {df['person_with_most_friends'][0]} (with {df['most_friends_count'][0]} friends)")
     print()
-    print("Most common name per city:")
-    for city, name in df['most_common_name_per_city'][0].items():
-        print(f"{city}: {name}")
+    print("Most common name for all cities:")
+    print(f"{df['most_common_name'][0]} ({df['most_common_name_count'][0]})")
     print()
     print(f"Most common hobby among all friends of all people:  {df['most_common_hobby'][0]} ({df['most_common_hobby_count'][0]})")
 
@@ -159,6 +171,8 @@ if __name__ == "__main__":
     json_output_file = "answer.json" 
     # Get the data from the server (or demo file)
     json_data = get_data(demo_url)
+    # Or use file input:
+    # json_data = load_json("response_ok.txt")
     # json_data = load_json("test/small.json")
 
     # Compute the required values
