@@ -5,7 +5,7 @@ https://github.com/brightsign/fakerest-test
 **Author:** Bernard Payne, April 2025
 
 ## Licence
-MIT-licesnsed
+MIT-licensed
 
 ## Running the code
 

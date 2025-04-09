@@ -1,5 +1,9 @@
 #!/usr/bin/env  python3
-Version = "1.0"
+Version = "1.1"
+'''
+Module performs a REST query on an endpoint and queries the data, per task description at:
+    https://github.com/brightsign/fakerest-test
+'''
 
 import requests
 import json
@@ -8,12 +12,8 @@ import ast
 from collections import Counter
 import re
 
-'''
-Module performs a REST query on an endpoint and queries the data, per task description at:
-    https://github.com/brightsign/fakerest-test
-'''
-
-
+# Globals
+# ----------------
 # URL of the endpoint 
 demo_url = "http://test.brightsign.io:3000/"
 
@@ -22,10 +22,9 @@ def get_data(url):
     '''
     Function to make a GET request to the specified URL and return the JSON response.
     '''
-    retval = None
 
-    response = requests.get(url, stream=True)
-    
+    retval = None
+    response = requests.get(url, stream=True)   
     # Check if the request was successful
     if response.status_code == 200:
         # Initialize a list to store the parsed JSON objects
@@ -52,6 +51,7 @@ def save_json(json_data, json_file):
     '''
     Convenience function to save JSON data to a file for testing purposes.
     '''
+
     with open(json_file, 'w') as file:
         json.dump(json_data, file, indent=4)
     print(f"Data saved to {json_file}")
@@ -61,6 +61,7 @@ def load_json(json_file):
     '''
     Convenience function to load demo JSON data from a file for testing purposes.
     '''
+
     with open(json_file, 'r') as file:
         json_data = json.load(file)
     return json_data
@@ -122,8 +123,11 @@ def process_json(json):
     return results_df
 
 
-# Check if the DataFrame has data and the correct fields
 def check_dataframe(df):
+    '''
+    Check if the DataFrame has data and the correct fields
+    '''
+
     # Define the required columns
     required_columns = ['id', 'name', 'city', 'age', 'friends']
         # Check if the DataFrame is not empty
@@ -141,7 +145,9 @@ def check_dataframe(df):
 
 def print_results(df):
     '''
-    Convenience function to print the results in a readable format.'''
+    Convenience function to print the results in a readable format.
+    '''
+    
     print(f"The average age per city:")
     for city, mean_age in df['average_age_per_city'][0].items():
         print(f"{city}: {mean_age}")
@@ -170,10 +176,10 @@ def save_dataframe_to_json(df, output_file):
 if __name__ == "__main__":
     json_output_file = "answer.json" 
     # Get the data from the server (or demo file)
-    json_data = get_data(demo_url)
+    # json_data = get_data(demo_url)
     # Or use file input:
     # json_data = load_json("response_ok.txt")
-    # json_data = load_json("test/small.json")
+    json_data = load_json("test/small.json")
 
     # Compute the required values
     results_df = process_json(json_data)
