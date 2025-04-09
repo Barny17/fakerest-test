@@ -1,6 +1,10 @@
 [
     {
-        "average_age":68,
+        "average_age_per_city":{
+            "Branson":87,
+            "Charleston":60,
+            "Saint Augustine":56
+        },
         "average_friends_per_city":{
             "Branson":6,
             "Charleston":3,
@@ -8,11 +12,9 @@
         },
         "person_with_most_friends":"Jack",
         "most_friends_count":6,
-        "most_common_name_per_city":{
-            "Branson":"Jack",
-            "Charleston":"Levi",
-            "Saint Augustine":"Mateo"
-        },
+        "most_common_name":"Levi",
+        "most_common_name_count":1,
+        "most_common_name_all_cities":"Levi",
         "most_common_hobby":"Jewelry Making",
         "most_common_hobby_count":3
     }
