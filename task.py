@@ -147,7 +147,7 @@ def print_results(df):
     '''
     Convenience function to print the results in a readable format.
     '''
-    
+
     print(f"The average age per city:")
     for city, mean_age in df['average_age_per_city'][0].items():
         print(f"{city}: {mean_age}")
@@ -176,10 +176,10 @@ def save_dataframe_to_json(df, output_file):
 if __name__ == "__main__":
     json_output_file = "answer.json" 
     # Get the data from the server (or demo file)
-    # json_data = get_data(demo_url)
+    json_data = get_data(demo_url)
     # Or use file input:
     # json_data = load_json("response_ok.txt")
-    json_data = load_json("test/small.json")
+    # json_data = load_json("test/small.json")
 
     # Compute the required values
     results_df = process_json(json_data)
