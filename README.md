@@ -58,8 +58,12 @@ $ jq '.[].most_common_name_all_cities' answer.json
 
 $ jq '.[].most_common_hobby' answer.json 
 "Television"
-
 ```
+The shell script *test.sh* will test the contents of answer.json in this way.
+```
+sh test.sh
+```
+
 \* Tested on Ubuntu 20.04 using Python 3.8.10
 
 \* Also tested on MacOS Monterey and Python 3.13.2
