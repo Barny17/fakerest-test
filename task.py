@@ -113,7 +113,6 @@ def process_json(json):
         'average_friends_per_city': [average_friends_per_city.to_dict()],
         'person_with_most_friends': [person_with_most_friends['name']],
         'most_friends_count': [person_with_most_friends['num_friends']],
-        'most_common_name' : [most_common_name],
         'most_common_name_count': [most_common_name_count],
         #'most_common_name_per_city': [most_common_name_per_city.to_dict()],
         'most_common_name_all_cities': [most_common_name],
@@ -159,7 +158,7 @@ def print_results(df):
     print(f"Person with the most friends: {df['person_with_most_friends'][0]} (with {df['most_friends_count'][0]} friends)")
     print()
     print("Most common name for all cities:")
-    print(f"{df['most_common_name'][0]} ({df['most_common_name_count'][0]})")
+    print(f"{df['most_common_name_all_cities'][0]} ({df['most_common_name_count'][0]})")
     print()
     print(f"Most common hobby among all friends of all people:  {df['most_common_hobby'][0]} ({df['most_common_hobby_count'][0]})")
 
