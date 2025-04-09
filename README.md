@@ -31,6 +31,35 @@ python3 task.py
 ```
 The output file answer.json is created and contains the computed response.
 
+### Test the output 
+
+Using **jq**: 
+```
+$ jq '.[].average_age_per_city' answer.json 
+{
+  "Austin": 56,
+  "Boston": 60,
+  "Branson": 57,
+  ...
+
+$ jq '.[].average_friends_per_city' answer.json
+{
+  "Austin": 4,
+  "Boston": 4,
+  "Branson": 4,
+...
+}
+
+$ jq '.[].person_with_most_friends' answer.json
+  "Ava"
+
+$ jq '.[].most_common_name_all_cities' answer.json 
+"Lucas"
+
+$ jq '.[].most_common_hobby' answer.json 
+"Television"
+
+```
 \* Tested on Ubuntu 20.04 using Python 3.8.10
 
 \* Also tested on MacOS Monterey and Python 3.13.2
@@ -53,4 +82,6 @@ Consider generating a Python package if this gets used much.
 Thanks, OpenAI, for useful VSCode-integrated assistance.
 
 ## My thoughts on the exercise
-This exercise targets Cloud developers... not really my role so I'm feeling a little out of sorts. I did not attempt to explore a JSON schema in any depth, focusing instead on writing code that could be assessed for roles beyond Cloud development. The code runs consistently for well-formed JSON in a text file. The code appears to generate correct answers from the server REST API request but I see that the server intermittently generates output that will cause this program to fail to parse; I have not attempted to delve further into these cases. Thanks for your understanding.
+This exercise targets Cloud developers... not really my role so I'm feeling a little out of sorts. I did not attempt to explore a JSON schema in any depth, focusing instead on writing code that could be assessed for roles beyond Cloud development. 
+
+The code runs consistently for well-formed JSON that was captured in a text file for testing. The code appears to generate correct answers from the server REST API request (tested using jq). However, I see from curl use that the server intermittently generates different output formats that will cause this program to fail to parse; I have not attempted to resolve for these cases. Thanks for your understanding.
